@@ -1,0 +1,50 @@
+########################################################
+## Created By Sam Hudnall Starting on 7/2017 ###########
+########################################################
+## Purpose and Intent: Control extron recording        #
+## Machines throughout campus, and allow various users #
+## To connect and start / stop from one panel. This    #
+## Will allow the full locking of the panels and allow #
+## Them to be set up once. Their is a lower chance that#
+## A Recording will be left running due to others      #
+## Forgetting to turn the machine off.                 #
+########################################################
+## First iteration: Setup pages and get functional.    #
+## Not too worried about page looks and overall feel   #
+## Until core components are running and are able to be#
+## Used at a consistant rate.                          # 
+## ----------------------------------------------------#
+## Second iteration: Clean up panel and make functions #
+## Easier and smoother to complete.                    #
+########################################################
+## Limitations: Unable to actually talk with units to  #
+## Receive feedback. It is coded in there where it can #
+## Listen, however it will make talk time slow and     #
+## Possibly fail to send commands.                     #
+########################################################
+
+# Changelog and todo #
+
+ -1 Update modify settings to allow changing stream settings
+ -2 Create add node page
+ -3 Have admin groups allow to modify their user groups ie PA Administrator can add user to pa user
+ 
+ 
+ 
+ 
+ 1.
+   1.1 Add text sections for calander ID, Iframe, and Stream Key
+   1.2 Create table to store stream url and key
+   1.3 verify / recode the calander lookup uses the sql tables to do a recurse search 
+   1.4 Have update send command to update stream key to extron
+   1.5 update created table with key and url
+   
+ 
+ 
+ 
+ 
+ 6/7/19 - fixed update panel settings 
+		- was using ip instead of oldip for doing lookups
+	- fixed update reboot script
+
+
