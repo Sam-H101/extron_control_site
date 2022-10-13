@@ -5,9 +5,10 @@
 function ldapName($LDAPUSER, $LDAPPASS)
 {
   $ad = adConnect();
+  $LDAP_DOMAIN= "";
   ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3);
   ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
-  if (!@ldap_bind($ad, "{$LDAPUSER}@LYNCHBURG.EDU", $LDAPPASS)){ LogError("Can Not bind to LDAP"); return $false;}
+  if (!@ldap_bind($ad, "{$LDAPUSER}@{$LDAP_DOMAIN}", $LDAPPASS)){ LogError("Can Not bind to LDAP"); return $false;}
   $attr = array("givenname", "sn");
   $filter = "(sAMAccountName=" . $LDAPUSER . ")";
   $basednldap = 'dc=lynchburg,dc=edu';
@@ -31,7 +32,7 @@ function checkAuthLDAP($ldapuser, $ldappass, $groupnameldap)
   $userldap = $ldapuser;
   $passwordldap = $ldappass;
   $hostldap = 'ymir';
-  $domainldap = 'lynchburg.edu';
+  $domainldap = '';
   $basednldap = baseLdap();
   $groupldap = $groupnameldap;
 
@@ -54,8 +55,8 @@ function checkAuthLDAP($ldapuser, $ldappass, $groupnameldap)
 
 function adConnect()
 {
-  $hostldap = 'ymir';
-  $domainldap = 'lynchburg.edu';
+  $hostldap = '';
+  $domainldap = '';
   $ad = ldap_connect("ldap://{$hostldap}.{$domainldap}") or die('Could not connect to LDAP server.');
   return $ad;
 }
@@ -64,7 +65,7 @@ function getUserDN($ldapuser, $ldappass)
 {
   $userldap = $ldapuser;
   $passwordldap = $ldappass;
-  $basednldap = 'dc=lynchburg,dc=edu';
+  $basednldap = '';
 
 
   $ad = adConnect();
